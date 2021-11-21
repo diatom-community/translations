@@ -1,17 +1,19 @@
 import * as React from 'react';
-import {Link} from 'gatsby';
+import "../index.css"
+
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components';
 import Container from './container';
-
+import HeaderImageSrc from "../images/diatom_header.jpg"
 
 const StyledHeader = styled.header`
+    background: url(${HeaderImageSrc});
     background-position: 50%;
     background-size: cover;
     padding-bottom: 20px;
     padding-top: 20px;
     color: #fff;
 `;
-
 
 const StyledNav = styled.nav`
     align-items: center;
@@ -21,7 +23,7 @@ const StyledNav = styled.nav`
 `;
 
 const StyledNavLink = styled(Link)`
-    color: #000;
+    color: #fff;
     display: inline-block;
     opacity: .7;
     padding: 5px 10px;
@@ -30,11 +32,21 @@ const StyledNavLink = styled(Link)`
 
 
 const Layout = ({ pageTitle, children }) => {
+    const data = useStaticQuery(graphql`
+        query {
+        site {
+            siteMetadata {
+            title
+            }
+        }
+        }
+    `);
+
     return (
         <div>
             <StyledHeader>
                 <Container>
-                    <title>{pageTitle}</title>
+                    <title>{pageTitle} | {data.site.siteMetadata.title}</title>
                     <StyledNav>
                         <div>
                             <StyledNavLink to="/">Home</StyledNavLink>
@@ -51,7 +63,7 @@ const Layout = ({ pageTitle, children }) => {
 
 
             <main>
-                <h1>{pageTitle}</h1>
+                <h1>{pageTitle} | {data.site.siteMetadata.title}</h1>
                 {children}
             </main>
         </div>
