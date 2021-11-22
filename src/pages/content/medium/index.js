@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 
-import Layout from '../../components/layout'
+import Layout from '../../../components/layout'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 // todo: facelift
@@ -130,7 +130,7 @@ export const query = graphql`
   query($locale: String!) {
     allFile(
       filter: {
-        sourceInstanceName: { eq: "discord" }
+        sourceInstanceName: { eq: "medium" }
         childMdx: { fields: { locale: { eq: $locale } } }
       }
       sort:{

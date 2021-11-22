@@ -20,10 +20,18 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "content",
-        path: "./content",
+        name: "discord",
+        path: "./content/discord",
       },
-      __key: "content",
+      __key: "discord",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "medium",
+        path: "./content/medium",
+      },
+      __key: "medium",
     },
     {
       resolve: `gatsby-theme-i18n`,

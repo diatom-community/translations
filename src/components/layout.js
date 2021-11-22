@@ -10,14 +10,19 @@ import { useLocalization, LocalesList } from "gatsby-theme-i18n"
 import { Link as RawLink } from "gatsby";
 
 import DiatomDaoLogo from '../images/diatom_logo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord, faMedium, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const StyledHeader = styled.header`
     background: url(${HeaderImageSrc});
     background-position: 50%;
     background-size: cover;
+
     padding-bottom: 20px;
     padding-top: 20px;
     color: #fff;
+    box-sizing: border-box;
+    position: relative;
 `;
 
 const StyledNav = styled.nav`
@@ -57,11 +62,29 @@ const StyledTopNavWrapper = styled.div`
     align-items: center;
 
 
-    > img {
+    .logo-wrapper {
         height: 100%;
-        width: auto;
-        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+
+
+        > img {
+            height: 100%;
+            width: auto;
+            flex-grow: 0;
+        }
+
+        > span {
+            font-size: 1.3em;
+            margin-left: 0.5em;
+            
+        }
     }
+    
 
     a {
         color: #fff;
@@ -74,44 +97,40 @@ const StyledTopNavWrapper = styled.div`
 `;
 
 
-const TopNavigation = ({}) => {
+const Logo = () => (
+    <div className="logo-wrapper">
+        <img src={DiatomDaoLogo} alt="Diatom Dao Logo" />
+        <span>CT</span>
+    </div>
+);
 
+const TopNavigation = ({}) => {
     return (
         <StyledTopNavWrapper>
             <Logo />
-
             <div>
-                <a href="https://discord.gg/aXyGv9YPAC">discord</a>
-                <a href="https://twitter.com/diatomdao">twitter</a>
+                <a href="https://discord.gg/aXyGv9YPAC"><FontAwesomeIcon icon={faDiscord}/> </a>
+                <a href="https://twitter.com/diatomdao"><FontAwesomeIcon icon={faTwitter}/></a>
+                <a href="https://medium.com/@diatomdao"><FontAwesomeIcon icon={faMedium}/></a>
             </div>
         </StyledTopNavWrapper>
-    )
-}
+    );
+};
 
 
 const StyledBannerText = styled.div`
     text-align: center;
     padding: 8vh 0;
-
-
-`
-
-
-const Logo = () => {
-    return (
-        <img src={DiatomDaoLogo} alt="Diatom Dao Logo" />
-    )
-
-}
+`;
 
 const Layout = ({ pageTitle, children, location}) => {
     const data = useStaticQuery(graphql`
         query {
-        site {
-            siteMetadata {
-            title
+            site {
+                siteMetadata {
+                title
+                }
             }
-        }
         }
     `);
 
@@ -121,7 +140,7 @@ const Layout = ({ pageTitle, children, location}) => {
         <StyledRawLink key={`locale-${locale.code}`} to={location.pathname.replace(currentLocale, locale.code)}>
             {locale.code}
         </StyledRawLink>
-    ))
+    ));
 
     return (
         <div>
@@ -137,10 +156,8 @@ const Layout = ({ pageTitle, children, location}) => {
                         <div>
                             <StyledNavLink to="/">Home</StyledNavLink>
                             <StyledNavLink to="/contributors">contribute how?</StyledNavLink>
-                            <StyledNavLink to="/content">Content</StyledNavLink>
-                        </div>
-
-                        <div>
+                            <StyledNavLink to="/content/discord">Discord</StyledNavLink>
+                            <StyledNavLink to="/content/medium">Medium</StyledNavLink>
                         </div>
                         <div>
                             {localeSelect}
@@ -154,7 +171,7 @@ const Layout = ({ pageTitle, children, location}) => {
                     {children}
             </Container>
         </div>
-    )
+    );
 }
 
 

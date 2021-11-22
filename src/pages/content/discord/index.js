@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 
-import Layout from '../../components/layout'
+import Layout from '../../../components/layout'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 // todo: facelift
@@ -113,6 +113,12 @@ const AnnouncementCard = ({body, frontmatter}) => {
 // </article>
 
 const PostsPage = ({ data, ...rest }) => {
+
+  const types = data.allFile.nodes.map((node) => {
+    const [_, type] = node.childMdx.frontmatter.slug.split("/")
+    return type
+  });
+
 
   return (
     <Layout pageTitle="Translated Content" {...rest}>
