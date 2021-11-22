@@ -24,10 +24,34 @@
       "dateFormat": "MM/DD/YYYY"
     },
     {
+      "code": "es",
+      "hrefLang": "es-ES",
+      "name": "Spanish",
+      "localName": "Español",
+      "langDir": "ltr",
+      "dateFormat": "MM/DD/YYYY"
+    },
+    {
+      "code": "fr",
+      "hrefLang": "fr-FR",
+      "name": "French",
+      "localName": "français",
+      "langDir": "ltr",
+      "dateFormat": "MM/DD/YYYY"
+    },
+    {
       "code": "de",
       "hrefLang": "de-DE",
       "name": "German",
       "localName": "Deutsch",
+      "langDir": "ltr",
+      "dateFormat": "DD.MM.YYYY"
+    },
+    {
+      "code": "id",
+      "hrefLang": "id-ID",
+      "name": "Indonesian",
+      "localName": "Indonesian",
       "langDir": "ltr",
       "dateFormat": "DD.MM.YYYY"
     },
