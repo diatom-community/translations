@@ -8,6 +8,22 @@
       "dateFormat": "MM/DD/YYYY"
     },
     {
+      "code": "zh",
+      "hrefLang": "zh-ZH",
+      "name": "Chinese",
+      "localName": "中国人",
+      "langDir": "ltr",
+      "dateFormat": "MM/DD/YYYY"
+    },
+    {
+      "code": "zh",
+      "hrefLang": "nl-NL",
+      "name": "Dutch",
+      "localName": "Nederlands",
+      "langDir": "ltr",
+      "dateFormat": "MM/DD/YYYY"
+    },
+    {
       "code": "de",
       "hrefLang": "de-DE",
       "name": "German",

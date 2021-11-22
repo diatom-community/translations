@@ -9,6 +9,8 @@ import HeaderImageSrc from "../images/diatom_header.jpg"
 import { useLocalization, LocalesList } from "gatsby-theme-i18n"
 import { Link as RawLink } from "gatsby";
 
+import DiatomDaoLogo from '../images/diatom_logo.png'
+
 const StyledHeader = styled.header`
     background: url(${HeaderImageSrc});
     background-position: 50%;
@@ -45,6 +47,63 @@ const StyledRawLink = styled(RawLink)`
 // todo: clean this up and split into multiple methods/components
 // todo: facelift
 
+
+const StyledTopNavWrapper = styled.div`
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+    > img {
+        height: 100%;
+        width: auto;
+        flex-grow: 0;
+    }
+
+    a {
+        color: #fff;
+        display: inline-block;
+        opacity: .7;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+
+`;
+
+
+const TopNavigation = ({}) => {
+
+    return (
+        <StyledTopNavWrapper>
+            <Logo />
+
+            <div>
+                <a href="https://discord.gg/aXyGv9YPAC">discord</a>
+                <a href="https://twitter.com/diatomdao">twitter</a>
+            </div>
+        </StyledTopNavWrapper>
+    )
+}
+
+
+const StyledBannerText = styled.div`
+    text-align: center;
+    padding: 8vh 0;
+
+
+`
+
+
+const Logo = () => {
+    return (
+        <img src={DiatomDaoLogo} alt="Diatom Dao Logo" />
+    )
+
+}
+
 const Layout = ({ pageTitle, children, location}) => {
     const data = useStaticQuery(graphql`
         query {
@@ -68,7 +127,12 @@ const Layout = ({ pageTitle, children, location}) => {
         <div>
             <StyledHeader>
                 <Container>
-                    <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+                    <TopNavigation />
+                    <StyledBannerText>
+                        <h1>{data.site.siteMetadata.title}</h1>
+                        <h2>{pageTitle}</h2>
+
+                    </StyledBannerText>
                     <StyledNav>
                         <div>
                             <StyledNavLink to="/">Home</StyledNavLink>
@@ -85,8 +149,8 @@ const Layout = ({ pageTitle, children, location}) => {
                 </Container>
             </StyledHeader>
 
-            <Container>
-                    <h1>{pageTitle} | {data.site.siteMetadata.title}</h1>
+            <Container style={{ paddingTop: "3em", paddingBottom: "2em"}}>
+                    {/* <h1>{pageTitle} | {data.site.siteMetadata.title}</h1> */}
                     {children}
             </Container>
         </div>
