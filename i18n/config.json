@@ -56,6 +56,14 @@
       "dateFormat": "DD.MM.YYYY"
     },
     {
+      "code": "it",
+      "hrefLang": "it-IT",
+      "name": "Italian",
+      "localName": "Italiano",
+      "langDir": "ltr",
+      "dateFormat": "MM/DD/YYYY"
+    },
+    {
       "code": "tr",
       "hrefLang": "tr-TR",
       "name": "Turkish",
