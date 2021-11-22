@@ -1,6 +1,8 @@
 import * as React from 'react'
 import Layout from '../components/layout'
 
+// todo: withLayout()
+
 const AboutPage = (props) => {
   return (
     <main>

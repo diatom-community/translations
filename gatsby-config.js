@@ -9,6 +9,7 @@ module.exports = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-slug",
     {
       resolve: "gatsby-plugin-manifest",
       options: {

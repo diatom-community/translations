@@ -1,6 +1,8 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
+// todo: rewrite
+
 // styles
 const pageStyles = {
   color: "#232129",

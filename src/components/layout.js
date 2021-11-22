@@ -41,6 +41,9 @@ const StyledRawLink = styled(RawLink)`
     text-decoration: none;
 `
 
+// todo: responsiveness?
+// todo: clean this up and split into multiple methods/components
+// todo: facelift
 
 const Layout = ({ pageTitle, children, location}) => {
     const data = useStaticQuery(graphql`
@@ -53,12 +56,7 @@ const Layout = ({ pageTitle, children, location}) => {
         }
     `);
 
-
-    // const location = useLocation();
-
-
-    console.log(location)
-    const { locale: currentLocale, config, defaultLang } = useLocalization()
+    const { locale: currentLocale, config } = useLocalization()
 
     const localeSelect = config.map(locale => (
         <StyledRawLink key={`locale-${locale.code}`} to={location.pathname.replace(currentLocale, locale.code)}>

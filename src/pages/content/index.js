@@ -4,6 +4,8 @@ import { LocalizedLink as Link } from "gatsby-theme-i18n"
 
 import Layout from '../../components/layout'
 
+// todo: facelift
+
 const BlogPage = ({ data, ...rest }) => {
 
   return (

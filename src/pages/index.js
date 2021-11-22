@@ -2,7 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 
 
-// markup
+// todo: withLayout()
 const IndexPage = (props) => {
   return (
     <Layout pageTitle="Home" {...props}>

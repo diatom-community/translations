@@ -5,9 +5,10 @@ import Layout from '../../components/layout'
 import styled from 'styled-components'
 
 
+// todo: style the MD content...
+// todo: see if you can pass custom components
+// todo: facelift
 const StyledMDWrapper = styled.div`
-
-
   p {
     margin: 0.5em 0;
   }
