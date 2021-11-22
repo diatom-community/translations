@@ -14,10 +14,18 @@ const StyledMDWrapper = styled.div`
 
 `
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, ...rest }) => {
+
+  if (! data.mdx) {
+    return (
+      <Layout pageTitle="not found" {...rest}>
+        <p>Sorry the page has yet been translated.</p>
+      </Layout>
+    )
+  }
 
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
+    <Layout pageTitle={data.mdx.frontmatter.title} {...rest}>
       <p><b>date:</b>{data.mdx.frontmatter.date}</p>
       <p><b>original post:</b>{data.mdx.frontmatter.originalPost}</p>
       <p><b>original author:</b>{data.mdx.frontmatter.postedBy}</p>
@@ -29,16 +37,22 @@ const BlogPost = ({ data }) => {
           {data.mdx.body}
         </MDXRenderer>
       </StyledMDWrapper>
+
+
     </Layout>
   )
 }
 
 export const query = graphql`
-  query($id: String) {
-    mdx(id: {eq: $id}) {
+  query($locale: String!, $slug: String!) {
+    mdx(
+      fields: {locale: {eq: $locale}}
+      frontmatter: { slug: { eq: $slug } }
+    ) {
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        slug
         originalPost
         postedBy
         translatedBy
@@ -47,5 +61,6 @@ export const query = graphql`
     }
   }
 `
+
 
 export default BlogPost

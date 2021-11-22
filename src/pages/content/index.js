@@ -1,18 +1,21 @@
 import * as React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import { LocalizedLink as Link } from "gatsby-theme-i18n"
+
 import Layout from '../../components/layout'
 
-const BlogPage = ({ data }) => {
+const BlogPage = ({ data, ...rest }) => {
+
   return (
-    <Layout pageTitle="My Blog Posts">
+    <Layout pageTitle="My Blog Posts" {...rest}>
       {
-        data.allMdx.nodes.map(node => (
-          <article key={node.id}>
+        data.allFile.nodes.map((node, key) => (
+          <article key={`article-${key}`}>
             <h2>
-              <Link to={`/content/${node.slug}`}>
-                {node.frontmatter.title}
+              <Link to={`/content/${node.childMdx.frontmatter.slug}`}>
+                {node.childMdx.frontmatter.title}
                 &nbsp;
-                <small>({node.frontmatter.date})</small>
+                <small>({node.childMdx.frontmatter.date})</small>
               </Link> 
             </h2>
             <hr />
@@ -24,18 +27,29 @@ const BlogPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+  query($locale: String!) {
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "content" }
+        childMdx: { fields: { locale: { eq: $locale } } }
+      }
+      sort:{
+        fields: childMdx___frontmatter___date
+        order: DESC
+      }
+    ) {
       nodes {
-        frontmatter {
-          date(formatString: "MMMM D, YYYY")
-          title
+        childMdx {
+          frontmatter {
+            title,
+            date(formatString: "MMMM D, YYYY")
+            slug
+          }
         }
-        id
-        slug
       }
     }
   }
 `
+
 
 export default BlogPage

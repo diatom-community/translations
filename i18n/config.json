@@ -1,0 +1,26 @@
+[
+    {
+      "code": "en",
+      "hrefLang": "en-US",
+      "name": "English",
+      "localName": "English",
+      "langDir": "ltr",
+      "dateFormat": "MM/DD/YYYY"
+    },
+    {
+      "code": "de",
+      "hrefLang": "de-DE",
+      "name": "German",
+      "localName": "Deutsch",
+      "langDir": "ltr",
+      "dateFormat": "DD.MM.YYYY"
+    },
+    {
+      "code": "tr",
+      "hrefLang": "tr-TR",
+      "name": "Turkish",
+      "localName": "Turkce",
+      "langDir": "ltr",
+      "dateFormat": "DD.MM.YYYY"
+    }
+  ]

@@ -1,10 +1,13 @@
 import * as React from 'react';
 import "../index.css"
 
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { LocalizedLink as Link } from "gatsby-theme-i18n"
+import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components';
 import Container from './container';
 import HeaderImageSrc from "../images/diatom_header.jpg"
+import { useLocalization, LocalesList } from "gatsby-theme-i18n"
+import { Link as RawLink } from "gatsby";
 
 const StyledHeader = styled.header`
     background: url(${HeaderImageSrc});
@@ -30,8 +33,16 @@ const StyledNavLink = styled(Link)`
     text-decoration: none;
 `;
 
+const StyledRawLink = styled(RawLink)`
+    color: #fff;
+    display: inline-block;
+    opacity: .7;
+    padding: 5px 10px;
+    text-decoration: none;
+`
 
-const Layout = ({ pageTitle, children }) => {
+
+const Layout = ({ pageTitle, children, location}) => {
     const data = useStaticQuery(graphql`
         query {
         site {
@@ -41,6 +52,19 @@ const Layout = ({ pageTitle, children }) => {
         }
         }
     `);
+
+
+    // const location = useLocation();
+
+
+    console.log(location)
+    const { locale: currentLocale, config, defaultLang } = useLocalization()
+
+    const localeSelect = config.map(locale => (
+        <StyledRawLink key={`locale-${locale.code}`} to={location.pathname.replace(currentLocale, locale.code)}>
+            {locale.code}
+        </StyledRawLink>
+    ))
 
     return (
         <div>
@@ -56,6 +80,9 @@ const Layout = ({ pageTitle, children }) => {
 
                         <div>
                             <StyledNavLink to="/contributors">Contributors</StyledNavLink>
+                        </div>
+                        <div>
+                            {localeSelect}
                         </div>
                     </StyledNav>
                 </Container>

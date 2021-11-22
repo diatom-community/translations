@@ -3,11 +3,10 @@ import Layout from "../components/layout"
 
 
 // markup
-const IndexPage = () => {
+const IndexPage = (props) => {
   return (
-    <Layout pageTitle="Home">
+    <Layout pageTitle="Home" {...props}>
       <p>TODO: Details about the website</p>
-
     </Layout>
   )
 }
