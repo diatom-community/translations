@@ -72,12 +72,11 @@ const Layout = ({ pageTitle, children, location}) => {
                     <StyledNav>
                         <div>
                             <StyledNavLink to="/">Home</StyledNavLink>
-                            <StyledNavLink to="/about">About</StyledNavLink>
+                            <StyledNavLink to="/contributors">contribute how?</StyledNavLink>
                             <StyledNavLink to="/content">Content</StyledNavLink>
                         </div>
 
                         <div>
-                            <StyledNavLink to="/contributors">Contributors</StyledNavLink>
                         </div>
                         <div>
                             {localeSelect}
