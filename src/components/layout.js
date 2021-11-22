@@ -51,6 +51,7 @@ const Layout = ({ pageTitle, children }) => {
                         <div>
                             <StyledNavLink to="/">Home</StyledNavLink>
                             <StyledNavLink to="/about">About</StyledNavLink>
+                            <StyledNavLink to="/content">Content</StyledNavLink>
                         </div>
 
                         <div>
@@ -59,13 +60,11 @@ const Layout = ({ pageTitle, children }) => {
                     </StyledNav>
                 </Container>
             </StyledHeader>
-            
 
-
-            <main>
-                <h1>{pageTitle} | {data.site.siteMetadata.title}</h1>
-                {children}
-            </main>
+            <Container>
+                    <h1>{pageTitle} | {data.site.siteMetadata.title}</h1>
+                    {children}
+            </Container>
         </div>
     )
 }
