@@ -16,7 +16,7 @@
       "dateFormat": "MM/DD/YYYY"
     },
     {
-      "code": "zh",
+      "code": "nl",
       "hrefLang": "nl-NL",
       "name": "Dutch",
       "localName": "Nederlands",
@@ -70,5 +70,61 @@
       "localName": "Turkce",
       "langDir": "ltr",
       "dateFormat": "DD.MM.YYYY"
+    },
+    {
+      "code": "hi",
+      "hrefLang": "hi-IN",
+      "name": "Hindi",
+      "localName": "हिंदी",
+      "langDir": "ltr",
+      "dateFormat": "DD.MM.YYYY"
+    },
+    {
+      "code": "ko",
+      "hrefLang": "ko-KR",
+      "name": "Korean",
+      "localName": "한국인",
+      "langDir": "ltr",
+      "dateFormat": "YYYY.MM.DD"
+    },
+    {
+      "code": "pl",
+      "hrefLang": "pl-PL",
+      "name": "Polish",
+      "localName": "Polskie",
+      "langDir": "ltr",
+      "dateFormat": "DD.MM.YYYY"
+    },
+    {
+      "code": "pt",
+      "hrefLang": "pt-PT",
+      "name": "Portuguese",
+      "localName": "Português",
+      "langDir": "ltr",
+      "dateFormat": "DD.MM.YYYY"
+    },
+    {
+      "code": "ru",
+      "hrefLang": "ru-RU",
+      "name": "Russian",
+      "localName": "Pусский",
+      "langDir": "ltr",
+      "dateFormat": "DD.MM.YYYY"
+    },
+    {
+      "code": "sk",
+      "hrefLang": "sk-SK",
+      "name": "Slovak-czech",
+      "localName": "Slovensko-český",
+      "langDir": "ltr",
+      "dateFormat": "DD.MM.YYYY"
+    },
+    {
+      "code": "vi",
+      "hrefLang": "vi-VN",
+      "name": "Vietnamese",
+      "localName": "Tiếng Việt",
+      "langDir": "ltr",
+      "dateFormat": "DD/MM/YYYY"
     }
   ]
