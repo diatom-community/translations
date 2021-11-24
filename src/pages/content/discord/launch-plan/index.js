@@ -3,12 +3,11 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 
-import Layout from '../../../components/layout'
+import Layout from '../../../../components/layout'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import DiscordPostCard from '../../../components/discodPost'
+import DiscordPostCard from '../../../../components/discodPost'
 
 // todo: facelift
-
 
 const StyledFilterWrapper = styled.div`
   display: flex;
@@ -29,6 +28,7 @@ const StyledFilterWrapper = styled.div`
 `
 
 const TypeFilter = ({ types }) => {
+
 
   return (
     <StyledFilterWrapper>
@@ -52,7 +52,7 @@ const PostsPage = ({ data, ...rest }) => {
 
 
   return (
-    <Layout pageTitle="Translated Content" {...rest}>
+    <Layout pageTitle="Translated Launch Plan posts" {...rest}>
       <TypeFilter types={types} />
       {
         data.allFile.nodes.map((node, key) => (
@@ -69,6 +69,7 @@ export const query = graphql`
       filter: {
         sourceInstanceName: { eq: "discord" }
         childMdx: { fields: { locale: { eq: $locale } } }
+        absolutePath: {regex: "/^.*\\/launch-plan\\/.*/"}
       }
       sort:{
         fields: childMdx___frontmatter___date

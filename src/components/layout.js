@@ -166,7 +166,7 @@ const Layout = ({ pageTitle, children, location}) => {
                 </Container>
             </StyledHeader>
 
-            <Container style={{ paddingTop: "3em", paddingBottom: "2em"}}>
+            <Container style={{ paddingTop: "2em", paddingBottom: "2em"}}>
                     {/* <h1>{pageTitle} | {data.site.siteMetadata.title}</h1> */}
                     {children}
             </Container>
