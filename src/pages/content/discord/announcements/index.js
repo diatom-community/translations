@@ -4,18 +4,15 @@ import { graphql } from 'gatsby'
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 
 import Layout from '../../../../components/layout'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import DiscordPostCard from '../../../../components/discodPost'
 
 // todo: facelift
-
 
 const StyledFilterWrapper = styled.div`
   display: flex;
   justify-content: end;
   border-bottom: 1px solid #44aa92;
   padding-bottom: 1em;
-
 
   a {
     text-decoration: none;
@@ -25,12 +22,9 @@ const StyledFilterWrapper = styled.div`
     margin-right: 0.5em;
     border-radius: 5px;
   }
-
 `
 
 const TypeFilter = ({ types }) => {
-
-
   return (
     <StyledFilterWrapper>
       {types.map(type => (
@@ -39,26 +33,36 @@ const TypeFilter = ({ types }) => {
         </Link>
       ))}
     </StyledFilterWrapper>
-  )
+  );
 }
 
 const PostsPage = ({ data, ...rest }) => {
 
-  const types = [
-    ...new Set(data.allFile.nodes.map((node) => {
-      const [_, type] = node.childMdx.frontmatter.slug.split("/")
-      return type
-    }))
-  ];
+  const posts = data.allFile.nodes.map(node => {
+
+    const [_, category] = node.childMdx.frontmatter.slug.split("/")
+
+    return {
+      ...node,
+      category,
+    }
+  })
+
+
+  const categories = [...new Set(posts.map(post => post.category))]
+
 
 
   return (
     <Layout pageTitle="Translated Announcements" {...rest}>
-      <TypeFilter types={types} />
+      <TypeFilter types={categories} />
       {
-        data.allFile.nodes.map((node, key) => (
-          <DiscordPostCard key={`announcement-${node.childMdx.frontmatter.slug}`} {...node.childMdx} />
-
+        posts.map((node, key) => (
+          <DiscordPostCard 
+            {...node.childMdx} 
+            key={`announcement-${node.childMdx.frontmatter.slug}`} 
+            category={node.category} 
+          />
         ))
       }
     </Layout>
@@ -89,11 +93,10 @@ export const query = graphql`
             translatedBy
           }
           body
+          timeToRead
         }
       }
     }
   }
 `
-
-
 export default PostsPage

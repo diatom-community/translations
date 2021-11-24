@@ -6,14 +6,14 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 const StyledAnnouncementCard = styled.article`
   border-bottom: 1px solid #ccc;
-  padding-top: 2em;
+  padding: 1em 0;
+  margin: 0 1em;
+  cursor: pointer;
 `;
 
 const MarkdownWrapper = styled.div`
-  padding: 1em 3em;
-  
+  padding: 1em;
   color: #070504;
-
 
   p {
     padding: 0.5em 0;
@@ -33,7 +33,6 @@ const MarkdownWrapper = styled.div`
     }
   }
 
-
   blockquote {
     border-left: 3px solid #15876c;
     color: #1a1a1a;
@@ -49,50 +48,71 @@ const MarkdownWrapper = styled.div`
   }
 `;
 
-const StyledAnnouncementCardHeaderWrapper = styled.div`
+const StyledHeaderWrapper = styled.div`
+    display: flex;
+    align-content: center;
+    line-height: 1em;
 
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1em;
+    text-transform: capitalize;
 
 
-  a {
-    color: #008e6d;
-    text-decoration: none;
-  }
+    > small {
+        display: inline-block;
+        white-space: nowrap;
+        width: auto;
+
+        &:first-of-type {
+            width: 10em;
+            margin-right: 1em;
+        }
+
+
+        &:last-of-type {
+            margin-left: auto;
+            align-self: flex-end;
+            justify-self: flex-end;
+        }
+    }
 `;
 
+const SimpleHeader = ({frontmatter, category, timeToRead, handleClick}) => {
 
-const DiscordPostCard = ({body, frontmatter}) => {
+    return (
+        <StyledHeaderWrapper onClick={handleClick}>
+            <small>{frontmatter.date}</small>
 
-  return (
-    <StyledAnnouncementCard>
-      <StyledAnnouncementCardHeaderWrapper>
-        <div>
-          <span style={{ color: "#44aa92"}}>@{frontmatter.postedBy}</span>&nbsp;
-          <small>
-            (transleted by: <span style={{ color: "#15876c"}}>@{frontmatter.translatedBy}</span>) 
-          </small>
+            <p>
+                {frontmatter.title} by&nbsp;
+                <span style={{ color: "#44aa92"}}>@{frontmatter.postedBy}</span>&nbsp;
 
-          <br />
-          <small style={{ color: "#44aa92"}}>{frontmatter.date}</small>
-        </div>
+                <span>
+                    (translated by: <small style={{ color: "#15876c"}}>@{frontmatter.translatedBy}</small>) 
+                </span>
+            </p>
 
-        <div>
-          <small><a href={frontmatter.originalPost} target="_blank">see original in discord</a></small>
-        </div>
-
-      </StyledAnnouncementCardHeaderWrapper>
-
-      <MarkdownWrapper>
-        <MDXRenderer>
-          {body}
-        </MDXRenderer>
-      </MarkdownWrapper>
-    </StyledAnnouncementCard>
-  )
+            <small>
+                {timeToRead} Min
+            </small>
+        </StyledHeaderWrapper>
+    );
 }
 
+const DiscordPostCard = ({body, frontmatter, timeToRead, category}) => {
+    const [collapsed, setCollapsed] = React.useState(true)
+    const toggleCollapse = () => setCollapsed(!collapsed)
 
+    return (
+        <StyledAnnouncementCard onClick={toggleCollapse}>
+            <SimpleHeader frontmatter={frontmatter} category={category} timeToRead={timeToRead} />
+
+            {!collapsed && (
+                <MarkdownWrapper>
+                    <MDXRenderer>{body}</MDXRenderer>
+                </MarkdownWrapper>
+            )}
+
+        </StyledAnnouncementCard>
+    )
+}
 
 export default DiscordPostCard;
