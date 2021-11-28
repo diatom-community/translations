@@ -12,7 +12,6 @@ const ContributorsPage = (props) => {
               className="airtable-embed airtable-dynamic-height" 
               src="https://airtable.com/embed/shr98rE1fSj537F3n?backgroundColor=teal" 
               frameBorder="0" 
-              onMouseWheel="" 
               width="100%" 
               height="1750" 
               style={{background: "transparent"}}
