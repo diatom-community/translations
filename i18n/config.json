@@ -32,14 +32,6 @@
       "dateFormat": "MM/DD/YYYY"
     },
     {
-      "code": "pt",
-      "hrefLang": "pt-PT",
-      "name": "Portuguese",
-      "localName": "Português",
-      "langDir": "ltr",
-      "dateFormat": "MM/DD/YYYY"
-    },
-    {
       "code": "fr",
       "hrefLang": "fr-FR",
       "name": "French",
